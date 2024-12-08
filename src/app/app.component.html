@@ -1,8 +1,9 @@
-<mat-toolbar>
-  <span>My Angular App</span>
-  <span style="flex: 1 1 auto;"></span>
-  <a mat-button routerLink="/users">Users</a>
-  <a mat-button routerLink="/posts">Posts</a>
+<mat-toolbar class="main-toolbar">
+  <a mat-button routerLink="/users" class="toolbar-link">Users</a>
+  <a mat-button routerLink="/posts" class="toolbar-link">Posts</a>
+  <span class="spacer"></span>
+  <span class="toolbar-title">Poster</span>
 </mat-toolbar>
-
-<router-outlet></router-outlet>
+<div class="content-container">
+  <router-outlet></router-outlet>
+</div>

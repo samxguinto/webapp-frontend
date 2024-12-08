@@ -3,19 +3,63 @@ mat-card {
   background-color: #ffffff; /* Clean white background */
   border-radius: 8px; /* Smooth rounded corners */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  margin-bottom: 20px;
+  margin: 20px auto; /* Add auto margin for horizontal centering */
+  max-width: 800px; /* Restrict max width for better readability */
   padding: 20px;
 }
 
 /* Form Styling */
 mat-form-field {
-  width: 100%;
+  width: 100%; /* Full-width form fields */
   margin-bottom: 16px;
 }
 
-/* Button Styling */
+mat-form-field mat-label {
+  font-weight: 600; /* Bold label for emphasis */
+  color: #37474f; /* Neutral gray color */
+}
+
+/* Post List Styling */
+.post-list {
+  margin-top: 20px;
+  background-color: #f9f9f9; /* Slight gray background for contrast */
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 10px;
+}
+
+.post-item {
+  padding: 16px 0; /* Reduced padding for better spacing */
+  border-bottom: 1px solid #e0e0e0; /* Subtle divider */
+}
+
+.post-item:last-child {
+  border-bottom: none; /* Remove border for the last item */
+}
+
+.post-content {
+  margin-bottom: 10px;
+}
+
+.post-content h3 {
+  margin: 0;
+  color: #37474f; /* Neutral gray for title */
+}
+
+.post-content p {
+  margin: 4px 0; /* Add spacing between paragraphs */
+  color: #555; /* Slightly lighter gray for content */
+  word-wrap: break-word; /* Ensure long words wrap */
+}
+
+/* Action Buttons Styling */
+.action-buttons {
+  display: flex;
+  gap: 8px; /* Space between buttons */
+}
+
 button {
-  background-color: #3949ab; /* Blue shade for buttons */
+  background-color: #5bd9ca; /* Blue shade for buttons */
   color: white;
   border-radius: 4px;
   padding: 8px 16px;
@@ -23,32 +67,25 @@ button {
 }
 
 button:hover {
-  background-color: #283593; /* Darker blue on hover */
+  background-color: #3eabcc; /* Darker blue on hover */
 }
 
-/* Post List */
-.post-list {
-  list-style: none;
-  padding: 0;
+/* Edit Form Styling */
+.edit-form {
+  margin-top: 20px;
 }
 
-.post-list li {
-  margin: 8px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+  mat-card {
+    padding: 16px;
+  }
 
-.post-list li mat-icon {
-  cursor: pointer;
-  color: #3949ab; /* Blue icon color */
-}
+  button {
+    width: 100%; /* Full-width buttons on smaller screens */
+  }
 
-.post-list li mat-icon:hover {
-  color: #283593; /* Darker blue on hover */
-}
-
-/* Headings */
-h1, h2 {
-  color: #37474f; /* Neutral dark gray */
+  .action-buttons {
+    flex-direction: column;
+  }
 }

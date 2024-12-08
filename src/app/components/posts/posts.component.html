@@ -1,39 +1,43 @@
 <mat-card>
   <h2>Create Post</h2>
-<form (ngSubmit)="createPost()">
-  <mat-form-field appearance="fill">
-    <mat-label>Title*</mat-label>
-    <input matInput [(ngModel)]="newPost.title" name="title" required />
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Content*</mat-label>
-    <textarea matInput [(ngModel)]="newPost.content" name="content" required></textarea>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>User ID*</mat-label>
-    <input matInput [(ngModel)]="newPost.userId" name="userId" required />
-  </mat-form-field>
-  <button mat-raised-button color="primary" type="submit">Create</button>
-</form>
-
+  <form (ngSubmit)="createPost()" class="create-post-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="newPost.title" name="title" required />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Content</mat-label>
+      <textarea matInput [(ngModel)]="newPost.content" name="content" required></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>User ID</mat-label>
+      <input matInput [(ngModel)]="newPost.userId" name="userId" required />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Create Post</button>
+  </form>
 </mat-card>
 
 <mat-card>
   <h2>Post List</h2>
-  <mat-list>
-    <mat-list-item *ngFor="let post of posts">
-      <div *ngIf="editingPost?.id !== post.id">
-        <h3 style="color: black;">{{ post.title }}</h3>
-        <p style="color: black;">{{ post.content }}</p>
-        <small>User ID: {{ post.userId }}</small>
-        <button mat-icon-button color="primary" (click)="editPost(post)">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button color="warn" (click)="deletePost(post.id)">
-          <mat-icon>delete</mat-icon>
-        </button>
+  <div class="post-container">
+    <mat-card *ngFor="let post of posts" class="post-card">
+      <!-- Post Title -->
+      <h3>{{ post.title }}</h3>
+
+      <!-- Post Content -->
+      <p>{{ post.content }}</p>
+
+      <!-- Post Author -->
+      <p><strong>Posted by:</strong> {{ post.name || 'Unknown User' }} (<strong>User ID:</strong> {{ post.userId }})</p>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button mat-raised-button color="primary" (click)="editPost(post)">Edit</button>
+        <button mat-raised-button color="warn" (click)="deletePost(post.id)">Delete</button>
       </div>
-      <div *ngIf="editingPost?.id === post.id">
+
+      <!-- Edit Section -->
+      <div *ngIf="editingPost?.id === post.id" class="edit-form">
         <form (ngSubmit)="updatePost()">
           <mat-form-field appearance="fill">
             <mat-label>Edit Title</mat-label>
@@ -47,7 +51,6 @@
           <button mat-button (click)="cancelEdit()">Cancel</button>
         </form>
       </div>
-    </mat-list-item>
-  </mat-list>
+    </mat-card>
+  </div>
 </mat-card>
-

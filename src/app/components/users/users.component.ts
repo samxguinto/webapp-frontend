@@ -44,7 +44,7 @@ export class UsersComponent implements OnInit {
 
   createUser() {
     this.http.post('http://localhost:5203/api/Users', this.newUser).subscribe(() => {
-      this.newUser = { name: '' };
+      this.newUser = { name: '' , posts:[] };
       this.loadUsers();
     });
   }

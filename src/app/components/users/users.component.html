@@ -1,6 +1,6 @@
 <mat-card>
   <h2>Create User</h2>
-  <form (ngSubmit)="createUser()">
+  <form (ngSubmit)="createUser()" class="create-user-form">
     <mat-form-field appearance="fill">
       <mat-label>User Name</mat-label>
       <input matInput [(ngModel)]="newUser.name" name="name" required />
@@ -11,18 +11,22 @@
 
 <mat-card>
   <h2>User List</h2>
-  <mat-list>
-    <mat-list-item *ngFor="let user of users">
-      <div *ngIf="editingUser?.id !== user.id" style="color: black;">
-        {{ user.name }}
-        <button mat-icon-button color="primary" (click)="editUser(user)">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button color="warn" (click)="deleteUser(user.id)">
-          <mat-icon>delete</mat-icon>
-        </button>
+  <div class="user-container">
+    <mat-card *ngFor="let user of users" class="user-card">
+      <!-- Display User Information -->
+      <div *ngIf="editingUser?.id !== user.id">
+        <h3>{{ user.name }}</h3>
+        <p><strong>User ID:</strong> {{ user.id }}</p>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+          <button mat-raised-button color="primary" (click)="editUser(user)">Edit</button>
+          <button mat-raised-button color="warn" (click)="deleteUser(user.id)">Delete</button>
+        </div>
       </div>
-      <div *ngIf="editingUser?.id === user.id">
+
+      <!-- Edit User Section -->
+      <div *ngIf="editingUser?.id === user.id" class="edit-form">
         <form (ngSubmit)="updateUser()">
           <mat-form-field appearance="fill">
             <mat-label>Edit Name</mat-label>
@@ -32,6 +36,6 @@
           <button mat-button (click)="cancelEdit()">Cancel</button>
         </form>
       </div>
-    </mat-list-item>
-  </mat-list>
+    </mat-card>
+  </div>
 </mat-card>
