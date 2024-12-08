@@ -1,0 +1,54 @@
+/* General Container Styles */
+mat-card {
+  background-color: #ffffff; /* Clean white background */
+  border-radius: 8px; /* Smooth rounded corners */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+/* Form Styling */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* Button Styling */
+button {
+  background-color: #3949ab; /* Blue shade for buttons */
+  color: white;
+  border-radius: 4px;
+  padding: 8px 16px;
+  text-transform: none;
+}
+
+button:hover {
+  background-color: #283593; /* Darker blue on hover */
+}
+
+/* Post List */
+.post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-list li {
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-list li mat-icon {
+  cursor: pointer;
+  color: #3949ab; /* Blue icon color */
+}
+
+.post-list li mat-icon:hover {
+  color: #283593; /* Darker blue on hover */
+}
+
+/* Headings */
+h1, h2 {
+  color: #37474f; /* Neutral dark gray */
+}

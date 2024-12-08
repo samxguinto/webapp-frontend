@@ -1,0 +1,37 @@
+<mat-card>
+  <h2>Create User</h2>
+  <form (ngSubmit)="createUser()">
+    <mat-form-field appearance="fill">
+      <mat-label>User Name</mat-label>
+      <input matInput [(ngModel)]="newUser.name" name="name" required />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Create</button>
+  </form>
+</mat-card>
+
+<mat-card>
+  <h2>User List</h2>
+  <mat-list>
+    <mat-list-item *ngFor="let user of users">
+      <div *ngIf="editingUser?.id !== user.id" style="color: black;">
+        {{ user.name }}
+        <button mat-icon-button color="primary" (click)="editUser(user)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteUser(user.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      <div *ngIf="editingUser?.id === user.id">
+        <form (ngSubmit)="updateUser()">
+          <mat-form-field appearance="fill">
+            <mat-label>Edit Name</mat-label>
+            <input matInput [(ngModel)]="editingUser.name" name="name" required />
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit">Save</button>
+          <button mat-button (click)="cancelEdit()">Cancel</button>
+        </form>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</mat-card>

@@ -1,0 +1,55 @@
+/* General Container Styles */
+mat-card {
+  background-color: #f9f9f9; /* Light background */
+  border-radius: 8px; /* Smooth rounded corners */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+/* Form Styling */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* Button Styling */
+button {
+  background-color: #00796b; /* Teal shade for buttons */
+  color: white;
+  border-radius: 4px;
+  padding: 8px 16px;
+  text-transform: none;
+}
+
+button:hover {
+  background-color: #004d40; /* Darker teal on hover */
+}
+
+/* User List */
+.user-list {
+  list-style: none;
+  padding: 1;
+}
+
+.user-list li {
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-list li mat-icon {
+  cursor: pointer;
+  color: #00796b; /* Teal icon color */
+}
+
+.user-list li mat-icon:hover {
+  color: #004d40; /* Darker teal on hover */
+}
+
+/* Headings */
+h1, h2 {
+  color: #37474f; /* Neutral dark gray */
+}
+
