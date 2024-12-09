@@ -11,10 +11,10 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getUsers(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/Users`);
+    return this.http.get<any[]>(`${this.apiUrl}/users`);
   }
 
   getPosts(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/Posts`);
+    return this.http.get<any[]>(`${this.apiUrl}/posts`);
   }
 }
