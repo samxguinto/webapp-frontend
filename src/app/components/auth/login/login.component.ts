@@ -41,7 +41,13 @@ export class LoginComponent {
     this.authService.login(this.email, this.password).subscribe({
       next: (response: any) => {
         localStorage.setItem('token', response.token); // Store the token in localStorage
-        console.log('Logged in successfully'); // Log success for debugging
+        console.log('Logged in successfully');
+        const token = localStorage.getItem('token');
+        if (token) {
+        console.log('Token in localStorage:', token); // show your token in the console
+        } else {
+        console.log('No token found in localStorage');
+}
         this.router.navigate(['/users']); // Redirect to Users page
       },
       error: (err) => {

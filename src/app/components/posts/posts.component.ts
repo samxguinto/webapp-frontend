@@ -38,7 +38,6 @@ export class PostsComponent implements OnInit {
     this.http.get('http://localhost:5203/api/posts').subscribe(
       (data: any) => {
         this.posts = data;
-        console.log('Posts loaded:', this.posts);
         this.cdr.detectChanges();
       },
       (error) => {
@@ -71,6 +70,8 @@ export class PostsComponent implements OnInit {
   }
 
   updatePost() {
+
+
     this.http.put(
       `http://localhost:5203/api/posts/${this.editingPost.id}`,
       this.editingPost

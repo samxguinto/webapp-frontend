@@ -12,18 +12,16 @@ import { RouterModule, Router } from '@angular/router';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'Your App Title'; // You can customize this title
+  title = '584 Project';
 
   constructor(private router: Router) {}
 
-  // Check if the user is logged in
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token'); // Returns true if a token exists
+    return !!localStorage.getItem('token');
   }
 
-  // Handle logout functionality
   logout(): void {
-    localStorage.removeItem('token'); // Remove the token
-    this.router.navigate(['/login']); // Redirect to login page
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }

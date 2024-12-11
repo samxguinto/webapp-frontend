@@ -42,7 +42,6 @@ export class RegisterComponent {
     this.authService.register(this.name, this.email, this.password).subscribe({
       next: (response: any) => {
         alert(response?.message || 'Registration successful.');
-        console.log('Registration successful:', response); // Log success for debugging
         this.router.navigate(['/login']); // Redirect to the login page
       },
       error: (err) => {

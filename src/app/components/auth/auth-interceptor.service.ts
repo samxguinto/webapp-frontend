@@ -8,17 +8,17 @@ import { Observable } from 'rxjs';
 export class AuthInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
-    console.log('Retrieved token:', token); // Debugging: Check if this log runs
+    console.log('Retrieved token:', token);
 
     if (token) {
       const clonedReq = req.clone({
         headers: req.headers.set('Authorization', `Bearer ${token}`),
       });
-      console.log('Cloned request with headers:', clonedReq); // Debugging: Check the request
+      console.log('Cloned request with headers:', clonedReq);
       return next.handle(clonedReq);
     }
 
-    console.log('No token found, passing request as is'); // Debugging: Log if no token
+    console.log('No token found, passing request as is');
     return next.handle(req);
   }
 }

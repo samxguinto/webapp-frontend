@@ -1,0 +1,32 @@
+.register-card {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.register-card h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #37474f;
+}
+
+.register-card mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.register-card button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.register-card .error-message {
+  margin-top: 10px;
+  color: #d32f2f;
+  font-size: 14px;
+}

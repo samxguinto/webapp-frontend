@@ -14,7 +14,7 @@ import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
-    AppComponent, // Declare your AppComponent or other components here
+    AppComponent,
   ],
   imports: [
     AuthInterceptorService,
@@ -29,7 +29,7 @@ import { MatListModule } from '@angular/material/list';
     MatListModule,
   ],
   providers: [
-    provideHttpClient(withInterceptorsFromDi()), // Registers HttpClient and enables DI-based interceptors
+    provideHttpClient(withInterceptorsFromDi()),
   ],
   bootstrap: [AppComponent],
 })

@@ -70,16 +70,23 @@ export class UsersComponent implements OnInit {
   }
 
   updateUser() {
-    this.http.put(`http://localhost:5203/api/users/${this.editingUser.id}`, this.editingUser).subscribe(
+
+    this.http.put(
+      `http://localhost:5203/api/users/${this.editingUser.id}`,
+      this.editingUser
+    ).subscribe(
       () => {
         this.editingUser = null;
         this.loadUsers();
       },
       (error) => {
         console.error('Error updating user:', error);
+        alert(`Failed to update user: ${error.error?.title || 'Unknown error'}`);
       }
     );
   }
+
+
 
   deleteUser(userId: number) {
     this.http.delete(`http://localhost:5203/api/users/${userId}`).subscribe(
