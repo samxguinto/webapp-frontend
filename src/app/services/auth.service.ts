@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5203/api/auth'; // Adjust this to match your backend's auth endpoint
+  private readonly apiUrl = `${environment.apiUrl}/auth`;
 
   constructor(private http: HttpClient) {}
 
@@ -25,14 +26,14 @@ export class AuthService {
   }
 
   setToken(token: string): void {
-    localStorage.setItem('token', token); // Save token to localStorage
+    localStorage.setItem('token', token);
   }
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('token'); // Check if a token exists
+    return !!localStorage.getItem('token');
   }
 
   logout() {
-    localStorage.removeItem('token'); // Remove the token
+    localStorage.removeItem('token');
   }
 }

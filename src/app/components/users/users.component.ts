@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-
+import { environment } from '../../../enviroments/enviroment';
 @Component({
   selector: 'app-users',
   standalone: true,
@@ -27,8 +27,9 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class UsersComponent implements OnInit {
   users: any[] = [];
-  newUser: any = { name: '', email: '', password: '' }; // Include email and password fields
+  newUser: any = { name: '', email: '', password: '' };
   editingUser: any = null;
+  private readonly apiUrl = `${environment.apiUrl}/users`;
 
   constructor(private http: HttpClient) {}
 
@@ -37,7 +38,7 @@ export class UsersComponent implements OnInit {
   }
 
   loadUsers() {
-    this.http.get('http://localhost:5203/api/users').subscribe(
+    this.http.get(this.apiUrl).subscribe(
       (data: any) => {
         this.users = data;
       },
@@ -53,9 +54,9 @@ export class UsersComponent implements OnInit {
       return;
     }
 
-    this.http.post('http://localhost:5203/api/users', this.newUser).subscribe(
+    this.http.post(this.apiUrl, this.newUser).subscribe(
       () => {
-        this.newUser = { name: '', email: '', password: '' }; // Reset the form
+        this.newUser = { name: '', email: '', password: '' };
         this.loadUsers();
       },
       (error) => {
@@ -70,11 +71,7 @@ export class UsersComponent implements OnInit {
   }
 
   updateUser() {
-
-    this.http.put(
-      `http://localhost:5203/api/users/${this.editingUser.id}`,
-      this.editingUser
-    ).subscribe(
+    this.http.put(`${this.apiUrl}/${this.editingUser.id}`, this.editingUser).subscribe(
       () => {
         this.editingUser = null;
         this.loadUsers();
@@ -86,10 +83,8 @@ export class UsersComponent implements OnInit {
     );
   }
 
-
-
   deleteUser(userId: number) {
-    this.http.delete(`http://localhost:5203/api/users/${userId}`).subscribe(
+    this.http.delete(`${this.apiUrl}/${userId}`).subscribe(
       () => {
         this.loadUsers();
       },

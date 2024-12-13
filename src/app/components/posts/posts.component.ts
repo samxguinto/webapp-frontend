@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { environment } from '../../../enviroments/enviroment';
 
 @Component({
   selector: 'app-posts',
@@ -27,6 +28,7 @@ export class PostsComponent implements OnInit {
   posts: any[] = [];
   newPost: any = { title: '', content: '', userId: '' };
   editingPost: any = null;
+  private readonly apiUrl = `${environment.apiUrl}/posts`;
 
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
@@ -35,7 +37,7 @@ export class PostsComponent implements OnInit {
   }
 
   loadPosts() {
-    this.http.get('http://localhost:5203/api/posts').subscribe(
+    this.http.get(this.apiUrl).subscribe(
       (data: any) => {
         this.posts = data;
         this.cdr.detectChanges();
@@ -53,7 +55,7 @@ export class PostsComponent implements OnInit {
     }
 
     this.newPost.userId = parseInt(this.newPost.userId, 10);
-    this.http.post('http://localhost:5203/api/posts', this.newPost).subscribe(
+    this.http.post(this.apiUrl, this.newPost).subscribe(
       () => {
         this.newPost = { title: '', content: '', userId: '' };
         this.loadPosts();
@@ -70,12 +72,7 @@ export class PostsComponent implements OnInit {
   }
 
   updatePost() {
-
-
-    this.http.put(
-      `http://localhost:5203/api/posts/${this.editingPost.id}`,
-      this.editingPost
-    ).subscribe(
+    this.http.put(`${this.apiUrl}/${this.editingPost.id}`, this.editingPost).subscribe(
       () => {
         this.editingPost = null;
         this.loadPosts();
@@ -87,7 +84,7 @@ export class PostsComponent implements OnInit {
   }
 
   deletePost(postId: number) {
-    this.http.delete(`http://localhost:5203/api/posts/${postId}`).subscribe(
+    this.http.delete(`${this.apiUrl}/${postId}`).subscribe(
       () => {
         this.loadPosts();
       },
